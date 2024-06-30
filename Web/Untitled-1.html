@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KB ASH-SHODIQ</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding-top: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #4caf50 3px solid;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .highlight, header .current a {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: #4caf50;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            min-height: 90vh;
+            background: url('Poto.jpeg');
+            text-align: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .showcase h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .showcase p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .showcase .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .showcase .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            margin-top: 60px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #4caf50;
+            border: 2px solid #4caf50;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .button:hover {
+            background: #45a049;
+            border-color: #45a049;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #fff; /* Warna putih untuk tautan di footer */
+        }
+
+        footer a:hover {
+            color: #4caf50; /* Warna hover untuk tautan di footer */
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .showcase h1 {
+                font-size: 48px;
+            }
+
+            .showcase p {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections by default */
+        .content-section {
+            display: none;
+        }
+
+        /* Display block for active section */
+        .active {
+            display: block;
+        }
+
+        /* Hover effect for navigation links */
+        nav ul li a {
+            position: relative;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: transparent;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover::before {
+            visibility: visible;
+            background-color: #4caf50;
+            transform: scaleX(1);
+        }
+
+        /* Additional Styles */
+        .learn-more {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #4caf50;
+            border: 2px solid #4caf50;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background: #45a049;
+            border-color: #45a049;
+        }
+    </style>
+</head>
+<body onload="showSection('home')">
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>KB ASH-SHODIQ</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                    <li><a href="#" onclick="showSection('events')">Events</a></li>
+                    <li><a href="#" onclick="showSection('news')">News</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="home" class="showcase content-section active">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Welcome To KB ASH-SHODIQ</h1>
+            <p>Official Website Of KB ASH-SHODIQ</p>
+        </div>
+    </section>
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Selamat datang di Website resmi kami KB ASH-SHODIQ, KB ASH-SHODIQ merupakan lembaga pendidikan anak usia dini terkemuka yang terletak di Desa Cikulak, Kecamatan Waled, Kabupaten Cirebon. Misi utama kami adalah menyediakan lingkungan yang mengasuh dan menstimulasi yang mendorong perkembangan
+                intelektual, sosial, dan emosional anak-anak.</p>
+        </div>
+    </section>
+    <section id="events" class="content-section">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <p>Stay updated on the latest events and celebrations in Lemah Duhur. From traditional festivals and cultural performances to community gatherings and seasonal fairs, there's always something happening in our village. Join us and experience the lively atmosphere and joyful occasions that bring our community together.</p>
+        </div>
+    </section>
+    <section id="news" class="content-section">
+        <div class="container">
+            <h2>Latest News</h2>
+            <p>Read about what's happening in our village. Our news section keeps you informed about recent developments, projects, and noteworthy events. Whether it's updates on local initiatives, achievements of our residents, or important announcements, you'll find the latest news from Lemah Duhur here.</p>
+        </div>
+    </section>
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Get in touch with us. Whether you have questions, need information, or want to share your thoughts, we're here to help. Feel free to reach out via phone, email, or visit
+us in person. We look forward to hearing from you and connecting with you.</p>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>
+                <a href="https://www.google.com/maps/dir/-6.895747,108.7011326/Kb+ash+shodiq/@-6.8971147,108.6965226,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x2e6f0fc18efc8483:0xa4a2e3536648e12b!2m2!1d108.7124818!2d-6.8995762?entry=ttu" target="_blank">Location of Kb Ash-Shodiq</a> | 
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPw_3JEFyRjBAE8sajJczJb8LVG3H1aRW5V2ar7mS-58DDLw/viewform" target="_blank">Pendaftaran KB ASH-SHODIQ</a>
+                <span style="float: right;">HEKMATYAR &copy; 2024</span>
+            </p>
+        </div>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section) {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+        }
+    </script>
+</body>
+</html>

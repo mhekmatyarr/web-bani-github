@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Tambahkan latar belakang berwarna */
+            background-image: linear-gradient(to bottom, #ffffff 0%, #e8f0ff 100%);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .form-footer a {
+            color: #4caf50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .form-footer a:hover {
+            color: #45a049;
+        }
+        /* Tambahkan style untuk checkbox */
+        .show-password {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <!-- Tambahkan checkbox untuk tampilkan/hide password -->
+                <input type="checkbox" id="showPassword" class="show-password">
+                <label for="showPassword">Show Password</label>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+            <div class="form-footer">
+                <a href="#">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            // You can add your authentication logic here, for example:
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === 'Bani' && password === '1234') {
+                alert('Login successful!');
+                window.location.href = 'file:///C:/Users/Annisa%20Nur%20Badriah/Downloads/Web/Untitled-1.html'; // Redirect to your website after successful login
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+
+        // Tambahkan event listener untuk checkbox show/hide password
+        document.getElementById('showPassword').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>
+</body>
+</html>
